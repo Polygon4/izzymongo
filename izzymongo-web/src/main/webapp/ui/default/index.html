@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/smoothness/jquery-ui-1.9.2.custom.css"/>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/jquery.jsonview.css" type="text/css"/>
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <p>Hello world! This is HTML5 Boilerplate.</p>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="js/vendor/jquery.layout-latest.js"></script>
+        <script src="js/vendor/jquery-ui-1.9.2.custom.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/vendor/jquery.form.js"></script>
+        <script src="js/vendor/jquery.jsonview.js"></script>
+        <script src="js/vendor/bootstrap.js"></script>
+
+        <script src="js/main.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('body').layout({ applyDefaultStyles: true });
+            });
+        </script>
+
+
+        <div class="ui-layout-center">
+            <div id="tabs">
+                    <ul>
+
+                        <li><a href="#tabs-1">Data</a></li>
+                        <li><a href="#tabs-2">Collection Info:</a></li>
+                    </ul>
+                <div id="tabs-1">
+
+                    <a href="#" id="button" class="ui-state-default ui-corner-all">Filter</a>
+                    <form id="myForm" action="http://localhost:8080/services/mongo/browse" method="get">
+                        <fieldset>
+                            <input type="hidden" name="db" id="formCurDb">
+                            <input type="hidden" name="collection" id="formCurCollection">
+                            <input type="hidden" name="page_num" id="formPageNumber" value="0">
+                            <input type="hidden" name="prev_first_id" id="formPrevFirstId">
+                            <input type="hidden" name="prev_last_id" id="formPrevLastId">
+                            <input type="hidden" name="prev_id" id="formPrevId">
+                            <input type="hidden" name="next_id" id="formNextId">
+                            <input type="hidden" name="browse_dir" id="formBrowseDir">
+                            <input type="hidden" name="sort" id="formSort" value="_id">
+
+                            <label for="selectCriteria">Criteria: <select name="criteria" id="selectCriteria"></select></label>
+                            <label for="formCriteriaValue"> = <input type="text" name="criteria_val" id="formCriteriaValue"></label>
+                            <label for="formCriteriaType">Data Type: <select name="criteria_type" id="formCriteriaType">
+                                <option value="ObjectId">Id</option>
+                                <option value="String">String</option>
+                                <option value="Number">Number</option>
+                            </select></label>
+                            <label for="selectLimit">Limit: <select name="limit" id="selectLimit">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+
+                            </select></label>
+                            <!--<label for="varSort">Sort:<select name="sort" id="varSort" >
+                            </select></label>-->
+                            <label for="sortDir">Sort: <select name="sort_dir" id="sortDir">
+                                <option value="1">ASC</option>
+                                <option value="-1">DESC</option>
+
+                            </select></label>
+                            <label for="selectFields">Fields: <select name="field" id="selectFields" multiple>
+
+
+                            </select></label>
+                            <label for="searchBtn"><input type="button" value="search" id="searchBtn"></label>
+                        </fieldset>
+                    </form>
+
+
+    <button id="rewind">Previous</button>
+
+    <button id="forward">Next</button>
+<div class="left"id="countLbl"></div>
+
+                    <div id="container">
+
+                    </div>
+
+                </div>
+
+                    <div id="tabs-2">
+                        <div class="left">Database: <div id="dbValue"></div></div>
+                        <div class="left">Collection: <div id="colValue"></div> </div>
+                        <div class="left">Count: <div id="countValue"></div> </div>
+                        <div class="left">Indexes: <div id="jsonViewT2"></div> </div>
+                    </div>
+               </div>
+
+
+       </div>
+       <div class="ui-layout-north">IzzyMongo v.0.01-beta</div>
+       <div class="ui-layout-west">
+           <div id="accordion"> </div>
+       </div>
+
+   </body>
+</html>

@@ -1,0 +1,3 @@
+http://media.mongodb.org/zips.json
+
+mongoimport --db test --collection zips --file zips.json

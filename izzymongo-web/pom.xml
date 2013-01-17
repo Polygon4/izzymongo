@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>us.polygon4</groupId>
+    <artifactId>izzymongo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>izzymongo-web</artifactId>
+  <packaging>war</packaging>
+  <name>IzzyMongo Web container</name>
+  <description>IzzyMongo Web packager</description>
+  <dependencies>
+  <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>izzymongo-config</artifactId>
+    </dependency>
+     <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>izzymongo-config-test</artifactId>
+            <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.google.collections</groupId>
+      <artifactId>google-collections</artifactId>
+    </dependency>
+    
+    <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>izzymongo-config-test</artifactId>
+            <scope>test</scope>
+    </dependency>
+    <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>izzymongo-service</artifactId>
+    </dependency>
+    <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        
+        <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        
+        <scope>provided</scope>
+      </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-all</artifactId>
+        <scope>test</scope>
+      </dependency>
+       <dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<scope>test</scope>
+		</dependency>
+  </dependencies>
+  <profiles>
+  <profile>
+            <id>jetty</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <configuration>                            
+                            <!-- <scanIntervalSeconds>10</scanIntervalSeconds> -->
+                            <webAppConfig>
+                                <contextPath>${context.root}</contextPath>
+                                <descriptor>${basedir}/../izzymongo-web/src/main/webapp/WEB-INF/web.xml</descriptor>
+                                <jettyEnvXml>${basedir}/../izzymongo-web/src/main/webapp/WEB-INF/jetty-env.xml</jettyEnvXml>                                
+                            </webAppConfig>  
+                            <webAppSourceDirectory>${basedir}/../izzymongo-web/src/main/webapp</webAppSourceDirectory>                          
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>clean</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+  </profiles>
+  <build>
+    <finalName>izzymongo</finalName>
+  </build>
+</project>

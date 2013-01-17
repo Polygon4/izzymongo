@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/mongohost</Arg>
+        <Arg type="java.lang.String">127.0.0.1</Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/mongoport</Arg>
+        <Arg type="java.lang.Integer">27017</Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/mongouser</Arg>
+        <Arg type="java.lang.String"></Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/mongopassword</Arg>
+        <Arg type="java.lang.String"></Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/connections-per-host</Arg>
+        <Arg type="java.lang.String">40</Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/threads-allowed-to-block-for-connection-multiplier</Arg>
+        <Arg type="java.lang.String">100</Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/connect-timeout</Arg>
+        <Arg type="java.lang.String">30000</Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/max-wait-time</Arg>
+        <Arg type="java.lang.String">120000</Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/auto-connect-retry</Arg>
+        <Arg type="java.lang.String">true</Arg>
+    </New>
+    
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg>data/socket-timeout</Arg>
+        <Arg type="java.lang.String">60000</Arg>
+    </New>
+    
+</Configure>

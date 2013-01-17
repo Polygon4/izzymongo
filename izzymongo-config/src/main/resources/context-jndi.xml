@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+            http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+
+    <!-- JNDI lookup -->
+    <jee:jndi-lookup id="dbHost" jndi-name="data/mongohost" />
+    <jee:jndi-lookup id="dbPort" jndi-name="data/mongoport" />
+    <jee:jndi-lookup id="connections-per-host" jndi-name="data/connections-per-host" />
+    <jee:jndi-lookup id="threads-allowed-to-block-for-connection-multiplier" 
+    				jndi-name="data/threads-allowed-to-block-for-connection-multiplier" />
+    <jee:jndi-lookup id="connect-timeout" jndi-name="data/connect-timeout" />
+    <jee:jndi-lookup id="max-wait-time" jndi-name="data/max-wait-time" />
+    <jee:jndi-lookup id="auto-connect-retry" jndi-name="data/auto-connect-retry" />
+    <jee:jndi-lookup id="socket-timeout" jndi-name="data/socket-timeout" />
+    
+    
+    
+</beans>
