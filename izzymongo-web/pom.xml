@@ -85,12 +85,13 @@
                         <artifactId>jetty-maven-plugin</artifactId>
                         <configuration>                            
                             <!-- <scanIntervalSeconds>10</scanIntervalSeconds> -->
+                            <!-- Windows users enter full path to your files in descriptor,jettyEnvXml and webAppSourceDirectory-->
                             <webAppConfig>
                                 <contextPath>${context.root}</contextPath>
                                 <descriptor>${basedir}/../izzymongo-web/src/main/webapp/WEB-INF/web.xml</descriptor>
                                 <jettyEnvXml>${basedir}/../izzymongo-web/src/main/webapp/WEB-INF/jetty-env.xml</jettyEnvXml>                                
                             </webAppConfig>  
-                            <webAppSourceDirectory>${basedir}/../izzymongo-web/src/main/webapp</webAppSourceDirectory>                          
+                            <webAppSourceDirectory>${basedir}/../izzymongo-web/src/main/webapp</webAppSourceDirectory>
                         </configuration>
                         <executions>
                             <execution>
