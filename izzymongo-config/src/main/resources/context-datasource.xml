@@ -28,7 +28,12 @@ http://www.springframework.org/schema/data/repository http://www.springframework
 	<property name="autoConnectRetry" ref="auto-connect-retry"/>
 	<property name="socketTimeout" ref="socket-timeout"/>
 </bean>      
-              
 
+<!-- MongoCLient for Scala
+<bean id=mongoClient class="com.mongodb.MongoClient">
+	<constructor-arg name="host" ref="dbHost"/>
+    <constructor-arg name="port" ref="dbPort"/>
+</bean>              
+ -->
 
 </beans>

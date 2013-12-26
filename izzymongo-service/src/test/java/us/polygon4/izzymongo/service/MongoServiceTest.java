@@ -28,6 +28,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.bson.types.ObjectId;
 import org.junit.Test;
@@ -44,7 +45,7 @@ public class MongoServiceTest extends AbstractDataTest{
 	@Autowired DataService dataService;
 	@Test
 	public void dbStructureTest() {
-		Map<String,List<String>> dbStructure=dataService.getDbStructure();
+		Map<String,Set<String>> dbStructure=dataService.getDbStructure();
 		assertThat(dbStructure, notNullValue());
 		assertTrue(dbStructure.containsKey("local"));
 	}

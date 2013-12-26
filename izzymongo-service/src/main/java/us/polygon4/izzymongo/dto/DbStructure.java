@@ -19,7 +19,7 @@
 package us.polygon4.izzymongo.dto;
 
 
-import java.util.List;
+import java.util.Set;
 import java.util.Map;
 
 /**
@@ -30,7 +30,7 @@ import java.util.Map;
  */
 public class DbStructure {
 	private String db;
-	private Map<String,List<String>> dbMap;	
+	private Map<String,Set<String>> dbMap;	
 
 	public String getDb() {
 		return db;
@@ -40,11 +40,11 @@ public class DbStructure {
 		this.db = db;
 	}
 
-	public Map<String,List<String>> getDbMap() {
+	public Map<String,Set<String>> getDbMap() {
 		return dbMap;
 	}
 
-	public void setDbMap(Map<String,List<String>> dbMap) {
+	public void setDbMap(Map<String,Set<String>> dbMap) {
 		this.dbMap = dbMap;
 	}
 }

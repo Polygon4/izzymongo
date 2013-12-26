@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import us.polygon4.izzymongo.dto.DbStructure;
 import us.polygon4.izzymongo.dto.Page;
 import us.polygon4.izzymongo.service.DataService;
+import us.polygon4.izzymongo.service.DataServiceScala;
 import us.polygon4.izzymongo.util.DBQuery;
 
 import com.mongodb.BasicDBObject;
@@ -46,7 +47,8 @@ import com.mongodb.BasicDBObject;
 @Controller
 @RequestMapping("/mongo*")
 public class AppController extends AbstractController {
-	@Autowired private DataService service;
+	//@Autowired private DataService service;
+	@Autowired private DataServiceScala service;
 		
 	/**
 	 * Returns a list of database and collections for navigation menu
