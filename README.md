@@ -3,7 +3,7 @@ IzzyMongo experimental MongoDB data viewer
 
 Practical alternative to the PetClinic app and a useful tool for viewing MondoDb databases.
 
-Browse, visualise data and export database schema in FreeMind format. For more information visit [IzzyMongo](http://www.polygon4.us)
+Browse, visualise data and export database schema in FreeMind format.
 
 #Pre-requisites
 * Java JDK 1.7+
