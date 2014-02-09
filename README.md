@@ -1,11 +1,12 @@
 IzzyMongo experimental MongoDB data viewer
 ==========================================
 
-Practical alternative to the PetClinic app and also a useful tool for viewing MondoDb databases.
+Practical alternative to the PetClinic app and a useful tool for viewing MondoDb databases.
 
 Browse, visualise data and export database schema in FreeMind format.
 
-For Scala version please switch to IMScala branch
+
+
 
 #Pre-requisites
 
@@ -15,7 +16,10 @@ For Scala version please switch to IMScala branch
 
 * MongoDB v.2.0+
 
-Tested with Oracle JDK 1.7 and local and remote instances of MongoDB v.2.4
+
+Tested with Oracle JDK 1.7, Scala 2.10.1, and local and remote instances of MongoDB v.2.4 
+
+
 
 #Quick-start
 1. Download or git clone from Github.

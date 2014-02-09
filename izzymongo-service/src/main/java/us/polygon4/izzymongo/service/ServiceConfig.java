@@ -39,8 +39,7 @@ import com.mongodb.Mongo;
 /**
  * Dynamically creates a map of MongoTemplates objects for each database
  * 
- * @author Mikhail Izrailov
- *
+ * 
  */
 @Configuration
 public class ServiceConfig {
@@ -48,7 +47,7 @@ public class ServiceConfig {
 	Logger log = LoggerFactory.getLogger(ServiceConfig.class);
 	
 	public @Bean MongoTemplateContainer initialize() throws Exception{
-		Map<String,MongoOperations> templateMap=new HashMap<>();
+		Map<String,MongoOperations> templateMap=new HashMap<String,MongoOperations>();
 		Mongo m=mongoFactoryBean.getObject();
 		for(String dbname:m.getDatabaseNames()){
 			MongoOperations mongoOps = new MongoTemplate(m, dbname);

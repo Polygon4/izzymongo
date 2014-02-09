@@ -1,30 +1,13 @@
 
 package us.polygon4.izzymongo.service.impl;
 
-/*
- * IzzyMongo Database Viewer 
- * 
- * Copyright (C) 2013 Polygon4, and individual contributors
- * by the @authors tag.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License. 
- */
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.dao.DataAccessException;
@@ -53,11 +36,8 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
 
-/**
- * @author Mikhail Izrailov
- *
- */
-@Service
+
+//@Service
 public class DataServiceImpl extends AbstractService implements DataService {
 	
 	ObjectMapper mapper = new ObjectMapper();
@@ -67,12 +47,12 @@ public class DataServiceImpl extends AbstractService implements DataService {
 	 * @see com.izzymongo.service.DataService#getDbStructure()
 	 */
 	@Override
-	public Map<String, List<String>> getDbStructure() {
-		Map<String,List<String>> dbStructure=new HashMap<>();
+	public Map<String, Set<String>> getDbStructure() {
+		Map<String,Set<String>> dbStructure=new HashMap<String,Set<String>>();
 		for(String key:mtContainer.getTemplateMap().keySet()){
 			MongoOperations mo=mtContainer.getTemplateMap().get(key);
 			if(LOG.isDebugEnabled()) LOG.debug("DB====================="+key);
-			List<String> collections=new ArrayList<>();
+			Set<String> collections=new HashSet<String>();
 			for(String colName:mo.getCollectionNames()){
 				if(LOG.isDebugEnabled()) LOG.debug("COLLECTION====================="+colName);
 				//skip system collections
@@ -121,7 +101,7 @@ public class DataServiceImpl extends AbstractService implements DataService {
 	@Override
 	public Page findDocuments(final DBQuery query) {
 		Page page=new Page();
-		List<DBObject> list=new ArrayList<>();
+		List<DBObject> list=new ArrayList<DBObject>();
 		MongoOperations mo=mtContainer.getTemplateMap().get(query.getDb());
 		
 		DBCursor cursor=mo.execute(query.getCollection(),new CollectionCallback<DBCursor>(){
@@ -191,10 +171,10 @@ public class DataServiceImpl extends AbstractService implements DataService {
 				String json = JSON.serialize(dbObject);
 				if (LOG.isDebugEnabled())LOG.debug(json);
 				@SuppressWarnings("unchecked")
-				Map<String, Object> userData = mapper.readValue(json.getBytes(), Map.class);
+				Map<String, Object> documentData = mapper.readValue(json.getBytes(), Map.class);
 				Element colNode = createNode(doc, colName);
-				for (String key : userData.keySet()) {
-					addAttribute(doc, colNode, key, userData.get(key));
+				for (String key : documentData.keySet()) {
+					addAttribute(doc, colNode, key, documentData.get(key));
 				}
 						
 				node.appendChild(colNode);
@@ -262,6 +242,7 @@ public class DataServiceImpl extends AbstractService implements DataService {
 		String val="null";
 		if(value!=null){
 			String s=value.getClass().toString();
+			
 			switch(s){
 			case "class java.util.LinkedHashMap":{
 				val="object";
@@ -295,10 +276,4 @@ public class DataServiceImpl extends AbstractService implements DataService {
 		}
 		return val;
 	}
-
-
-	
-	
-	
-
 }

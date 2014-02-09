@@ -20,6 +20,7 @@ package us.polygon4.izzymongo.service;
  */
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ import com.mongodb.DBObject;
 @Service
 public interface DataService {
 	
-	Map<String,List<String>> getDbStructure();
+	Map<String,Set<String>> getDbStructure();
 
 	long getDocumentCount(DBQuery query);
 

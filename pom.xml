@@ -28,7 +28,7 @@
     <org.slf4j-version>1.7.2</org.slf4j-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <querydsl.version>2.9.0</querydsl.version>
-    <jetty.version>9.0.0.M4</jetty.version>
+    <jetty.version>9.0.3.v20130506</jetty.version>
     <skipTests>true</skipTests>
     <context.root>/</context.root>
     <context.static>/home/mmm/static</context.static>
@@ -52,6 +52,31 @@
         <artifactId>izzymongo-service</artifactId>
         <version>${project.version}</version>
    </dependency>
+   <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>izzymongo-service-scala</artifactId>
+        <version>${project.version}</version>
+   </dependency>
+   
+   <!-- Scala -->
+   
+   <dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.mongodb</groupId>
+		    <artifactId>casbah-core_2.10</artifactId>
+		    <version>2.6.3</version>		    
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.mongodb</groupId>
+		    <artifactId>casbah-commons_2.10</artifactId>
+		    <version>2.6.3</version>		    
+		</dependency>
    
   <!-- Spring -->
       <dependency>
@@ -95,7 +120,7 @@
       <dependency>
         <groupId>org.springframework.data</groupId>
         <artifactId>spring-data-mongodb</artifactId>
-        <version>1.1.0.RELEASE</version><!-- 1.1.0.M1 BUILD-SNAPSHOT-->
+        <version>1.3.3.RELEASE</version><!-- 1.1.0.M1 BUILD-SNAPSHOT-->
       </dependency>
 
       <dependency>
@@ -355,7 +380,12 @@
                     <version>1.2.0.0</version>
                     <extensions>true</extensions>
                 </plugin>
-                
+                <plugin>
+				    <groupId>net.alchim31.maven</groupId>
+				    <artifactId>scala-maven-plugin</artifactId>
+				    <version>3.1.5</version>
+				    
+				  </plugin>
             </plugins>
         </pluginManagement>
             <plugins>					
@@ -377,8 +407,47 @@
                             <filteringEnabled>true</filteringEnabled>
                         </configuration>
                     </plugin>
+                    <plugin>
+				    <groupId>net.alchim31.maven</groupId>
+				    <artifactId>scala-maven-plugin</artifactId>
+				    <!-- <configuration>
+				      <recompileMode>incremental</recompileMode>
+				      <javacArgs>
+				        <javacArg>-Xlint:unchecked</javacArg>
+				        <javacArg>-Xlint:deprecation</javacArg>
+				      </javacArgs>
+				    </configuration> -->
+				    <executions>
+					<execution>
+						<id>scala-compile-first</id>
+						<phase>process-resources</phase>
+						<goals>
+						    <goal>add-source</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>scala-test-compile</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
             </plugins>
-            
     </build>
     <profiles>
     <profile>
@@ -532,6 +601,12 @@
   
   <repositories>
   <repository>
+    <id>casbah-repo</id>
+    <name>Casbah Repository</name>
+    <url>https://oss.sonatype.org/content/repositories/releases/</url>
+  </repository>
+   
+  <repository>
     <id>springsource-repo</id>
     <name>SpringSource Repository</name>
     <url>http://repo.springsource.org/release</url>
@@ -547,6 +622,7 @@
   	<module>izzymongo-config</module>
   	<module>izzymongo-config-test</module>
   	<module>izzymongo-service</module>
-  	<module>izzymongo-web</module>
+  	<module>izzymongo-service-scala</module>
+  	<module>izzymongo-web</module>  	
   </modules>
 </project>
